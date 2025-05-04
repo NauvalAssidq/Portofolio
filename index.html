@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend Developer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.12.0/cdn.min.js" defer></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Work+Sans:wght@300;400;500;600&display=swap');
+        
+        [x-cloak] {
+            display: none !important;
+        }
+        
+        html {
+            font-family: 'Work Sans', sans-serif;
+        }
+        
+        .mono {
+            font-family: 'Space Mono', monospace;
+        }
+        
+        .border-gradient {
+            border-image-slice: 1;
+            border-image-source: linear-gradient(to right, #6366f1, #a855f7);
+        }
+        
+        .tab-content {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        
+        .minimal-bg {
+            background-color: #fafafa;
+        }
+    </style>
+</head>
+<body class="minimal-bg min-h-screen flex items-center justify-center p-4 md:p-8" x-data="{ activeTab: 'profile' }">
+    
+    <div class="bg-white rounded-lg shadow-xl max-w-xl w-full overflow-hidden border-2 border-gray-100">
+        <!-- Card Header -->
+        <div class="p-6 border-b-2 border-gray-100">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-xl font-bold text-gray-800">Nauval D. Sidiq</h1>
+                    <p class="text-gray-500 text-sm">Junior Frontend Developer</p>
+                </div>
+                <div class="h-12 w-12 rounded-lg flex items-center justify-center border-2 border-indigo-500">
+                    <span class="text-indigo-600 font-bold text-lg mono">NDS</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tabs Navigation -->
+        <div class="relative border-b-2 border-gray-100">
+            <nav class="flex" aria-label="Tabs">
+                <button 
+                    @click="activeTab = 'profile'" 
+                    class="relative py-3 px-6 text-sm font-medium transition focus:outline-none border-gray-100 flex items-center"
+                    :class="activeTab === 'profile' ? 'text-indigo-600 border-b-2 border-indigo-500' : 'text-gray-500 hover:text-gray-800'">
+                    <span class="material-icons text-sm mr-2">person</span>
+                    Profile
+                </button>
+                <button 
+                    @click="activeTab = 'skills'" 
+                    class="relative py-3 px-6 text-sm font-medium transition focus:outline-none border-gray-100 flex items-center"
+                    :class="activeTab === 'skills' ? 'text-indigo-600 border-b-2 border-indigo-500' : 'text-gray-500 hover:text-gray-800'">
+                    <span class="material-icons text-sm mr-2">code</span>
+                    Skills
+                </button>
+                <button 
+                    @click="activeTab = 'contact'" 
+                    class="relative py-3 px-6 text-sm font-medium transition focus:outline-none flex items-center"
+                    :class="activeTab === 'contact' ? 'text-indigo-600 border-b-2 border-indigo-500' : 'text-gray-500 hover:text-gray-800'">
+                    <span class="material-icons text-sm mr-2">mail</span>
+                    Contact
+                </button>
+            </nav>
+        </div>
+        
+        <!-- Tab Contents -->
+        <div class="p-6">
+            <!-- Profile Tab -->
+            <div x-show="activeTab === 'profile'" 
+                 x-transition:enter="transition ease-out duration-300"
+                 x-transition:enter-start="opacity-0 transform translate-y-4"
+                 x-transition:enter-end="opacity-100 transform translate-y-0"
+                 x-cloak
+                 class="tab-content">
+                
+                 <div class="flex justify-center mb-6">
+                    <div class="relative w-24 h-24 rounded-full overflow-hidden border-2 border-indigo-500">
+                        <img src="https://github.com/octocat.png" alt="Nauval D. Sidiq" class="object-cover w-full h-full">
+                    </div>
+                </div>                
+                
+                <div class="text-center mb-6">
+                    <h2 class="text-lg font-medium text-gray-800 mb-1">About Me</h2>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Passionate frontend developer with 1+ years of experience crafting pixel-perfect, accessible, and performant web experiences.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-3 mb-4">
+                    <div class="border border-gray-200 p-3 rounded-lg">
+                        <div class="flex items-center">
+                            <span class="material-icons text-indigo-500 mr-3">calendar_today</span>
+                            <div>
+                                <div class="text-xs text-gray-500 mb-1">Experience</div>
+                                <div class="text-gray-800 font-medium">1+ Years</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border border-gray-200 p-3 rounded-lg">
+                        <div class="flex items-center">
+                            <span class="material-icons text-indigo-500 mr-3">folder</span>
+                            <div>
+                                <div class="text-xs text-gray-500 mb-1">Projects</div>
+                                <div class="text-gray-800 font-medium">12+ Completed</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border border-gray-200 p-3 rounded-lg">
+                        <div class="flex items-center">
+                            <span class="material-icons text-indigo-500 mr-3">place</span>
+                            <div>
+                                <div class="text-xs text-gray-500 mb-1">Location</div>
+                                <div class="text-gray-800 font-medium">Banda Aceh, Indonesia</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border border-gray-200 p-3 rounded-lg">
+                        <div class="flex items-center">
+                            <span class="material-icons text-indigo-500 mr-3">translate</span>
+                            <div>
+                                <div class="text-xs text-gray-500 mb-1">Languages</div>
+                                <div class="text-gray-800 font-medium">EN, ES, INA, AR</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6">
+                    <a href="#" class="w-full border-2 border-indigo-500 bg-indigo-500 hover:bg-indigo-600 text-white text-sm font-medium py-2 px-4 rounded-lg transition flex items-center justify-center">
+                        <span class="material-icons text-sm mr-2">download</span>
+                        Download Resume
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Skills Tab -->
+            <div x-show="activeTab === 'skills'" 
+                 x-transition:enter="transition ease-out duration-300"
+                 x-transition:enter-start="opacity-0 transform translate-y-4"
+                 x-transition:enter-end="opacity-100 transform translate-y-0"
+                 x-cloak
+                 class="tab-content">
+                
+                <h2 class="text-lg font-medium text-gray-800 mb-5 flex items-center">
+                    <span class="material-icons text-indigo-500 mr-2">code</span>
+                    Technical Skills
+                </h2>
+                
+                <!-- Skill Bars -->
+                <div class="space-y-4">
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="text-sm font-medium text-gray-700">Laravel</span>
+                            <span class="text-xs text-gray-500 mono">80%</span>
+                        </div>
+                        <div class="h-2 bg-gray-100 rounded-full overflow-hidden border border-gray-200">
+                            <div class="bg-gradient-to-r from-indigo-500 to-purple-500 h-full rounded-full" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="text-sm font-medium text-gray-700">JavaScript</span>
+                            <span class="text-xs text-gray-500 mono">60%</span>
+                        </div>
+                        <div class="h-2 bg-gray-100 rounded-full overflow-hidden border border-gray-200">
+                            <div class="bg-gradient-to-r from-indigo-500 to-purple-500 h-full rounded-full" style="width: 60%"></div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="text-sm font-medium text-gray-700">CSS/Tailwind/SASS</span>
+                            <span class="text-xs text-gray-500 mono">95%</span>
+                        </div>
+                        <div class="h-2 bg-gray-100 rounded-full overflow-hidden border border-gray-200">
+                            <div class="bg-gradient-to-r from-indigo-500 to-purple-500 h-full rounded-full" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="text-sm font-medium text-gray-700">UX/UI Design</span>
+                            <span class="text-xs text-gray-500 mono">85%</span>
+                        </div>
+                        <div class="h-2 bg-gray-100 rounded-full overflow-hidden border border-gray-200">
+                            <div class="bg-gradient-to-r from-indigo-500 to-purple-500 h-full rounded-full" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="text-sm font-medium text-gray-700">PHP</span>
+                            <span class="text-xs text-gray-500 mono">80%</span>
+                        </div>
+                        <div class="h-2 bg-gray-100 rounded-full overflow-hidden border border-gray-200">
+                            <div class="bg-gradient-to-r from-indigo-500 to-purple-500 h-full rounded-full" style="width: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tools & Technologies -->
+                <h3 class="text-md font-medium text-gray-800 mt-6 mb-3 flex items-center">
+                    <span class="material-icons text-indigo-500 mr-2">build</span>
+                    Tools & Technologies
+                </h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 border border-gray-200 text-gray-700 text-xs rounded-full">Git</span>
+                    <span class="px-3 py-1 border border-gray-200 text-gray-700 text-xs rounded-full">Vite</span>
+                    <span class="px-3 py-1 border border-gray-200 text-gray-700 text-xs rounded-full">Figma</span>
+                    <span class="px-3 py-1 border border-gray-200 text-gray-700 text-xs rounded-full">REST APIs</span>
+                    <span class="px-3 py-1 border border-gray-200 text-gray-700 text-xs rounded-full">GraphQL</span>
+                </div>
+            </div>
+            
+            <!-- Contact Tab -->
+            <div x-show="activeTab === 'contact'" 
+                 x-transition:enter="transition ease-out duration-300"
+                 x-transition:enter-start="opacity-0 transform translate-y-4"
+                 x-transition:enter-end="opacity-100 transform translate-y-0"
+                 x-cloak
+                 class="tab-content">
+                
+                <h2 class="text-lg font-medium text-gray-800 mb-5 flex items-center">
+                    <span class="material-icons text-indigo-500 mr-2">contact_mail</span>
+                    Get In Touch
+                </h2>
+                
+                <!-- Contact Details -->
+                <div class="space-y-4 mb-6">
+                    <div class="flex items-center border border-gray-200 p-3 rounded-lg">
+                        <div class="w-10 h-10 rounded-full bg-indigo-50 flex items-center justify-center flex-shrink-0 border border-indigo-100">
+                            <span class="material-icons text-indigo-500">email</span>
+                        </div>
+                        <div class="ml-3">
+                            <div class="text-xs text-gray-500">Email</div>
+                            <a href="mailto:nauvalsidiq0427@gmail.com" class="text-gray-800 font-medium text-sm hover:text-indigo-600 transition">
+                                nauvalsidiq0427@gmail.com
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center border border-gray-200 p-3 rounded-lg">
+                        <div class="w-10 h-10 rounded-full bg-indigo-50 flex items-center justify-center flex-shrink-0 border border-indigo-100">
+                            <span class="material-icons text-indigo-500">phone</span>
+                        </div>
+                        <div class="ml-3">
+                            <div class="text-xs text-gray-500">Phone</div>
+                            <a href="tel:+6285156746429" class="text-gray-800 font-medium text-sm hover:text-indigo-600 transition">
+                                (62) 85156-746420
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center border border-gray-200 p-3 rounded-lg">
+                        <div class="w-10 h-10 rounded-full bg-indigo-50 flex items-center justify-center flex-shrink-0 border border-indigo-100">
+                            <span class="material-icons text-indigo-500">place</span>
+                        </div>
+                        <div class="ml-3">
+                            <div class="text-xs text-gray-500">Location</div>
+                            <div class="text-gray-800 font-medium text-sm">
+                                Banda Aceh, Indonesia
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Social Media -->
+                <div class="border-t border-gray-200 pt-5">
+                    <h3 class="text-sm font-medium text-gray-800 mb-3 flex items-center">
+                        <i class="fas fa-share-alt text-indigo-500 mr-2 text-sm"></i>
+                        Connect With Me
+                    </h3>
+                    <div class="flex space-x-3">
+                        <a href="https://github.com/nauvalassidq" class="w-9 h-9 rounded-full border border-gray-200 hover:border-indigo-500 flex items-center justify-center text-gray-600 hover:text-indigo-600 transition">
+                            <i class="fab fa-github text-sm"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/#" class="w-9 h-9 rounded-full border border-gray-200 hover:border-indigo-500 flex items-center justify-center text-gray-600 hover:text-indigo-600 transition">
+                            <i class="fab fa-linkedin-in text-sm"></i>
+                        </a>
+                        <a href="https://twitter.com/thesecondhalla" class="w-9 h-9 rounded-full border border-gray-200 hover:border-indigo-500 flex items-center justify-center text-gray-600 hover:text-indigo-600 transition">
+                            <i class="fab fa-twitter text-sm"></i>
+                        </a>
+                        <a href="https://dribbble.com/#" class="w-9 h-9 rounded-full border border-gray-200 hover:border-indigo-500 flex items-center justify-center text-gray-600 hover:text-indigo-600 transition">
+                            <i class="fab fa-dribbble text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Contact Form -->
+                <div class="mt-6" x-data="{ message: '', sent: false }">
+                    <div x-show="!sent">
+                        <div class="mb-3">
+                            <textarea 
+                                x-model="message"
+                                placeholder="Send me a quick message..."
+                                class="w-full px-3 py-2 text-sm text-gray-700 border border-gray-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 resize-none"
+                                rows="3"></textarea>
+                        </div>
+                        <button 
+                            @click="sent = true; setTimeout(() => sent = false, 3000)" 
+                            class="w-full border-2 border-indigo-500 bg-indigo-500 hover:bg-indigo-600 text-white text-sm font-medium py-2 px-4 rounded-lg transition flex items-center justify-center">
+                            <span class="material-icons text-sm mr-2">send</span> Send Message
+                        </button>
+                    </div>
+                    <div 
+                        x-show="sent"
+                        x-transition
+                        class="border border-green-200 bg-green-50 text-green-700 px-4 py-3 rounded-lg text-sm text-center">
+                        <span class="material-icons text-sm mr-1 align-middle">check_circle</span> Message sent successfully!
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Card Footer -->
+        <div class="px-6 py-4 border-t border-gray-100 text-center">
+            <p class="text-xs text-gray-500 mono">
+                &copy; 2025 Nauval D. Sidiq • Frontend Developer
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>
